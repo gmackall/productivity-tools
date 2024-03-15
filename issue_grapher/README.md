@@ -29,4 +29,4 @@ Outputs are EXTREMELY rough at the moment. Example:
 ### Things that would be nice to add:
 1. Pass args to determine the time bucketing (it buckets by week currently).
 2. Pass args to determine the start and end time.
-3. Make the x axis legible.
+3. ~~Make the x axis legible.~~ Mostly done but still room for improvement.
