@@ -71,6 +71,7 @@ void main(List<String> arguments) {
         [
           'api',
           '/repos/flutter/flutter/issues/${results['issue']}/reactions',
+          '--paginate'
         ]
     );
     if (jsonData.exitCode != 0) {
@@ -82,8 +83,21 @@ void main(List<String> arguments) {
     Directory logDir = Directory('${dirname(Platform.script.path)}/../logs/')
       ..createSync(recursive: true);
     File logFile = File('${logDir.path}${results['issue']}.json');
+
     print('Writing gh reply data to $logFile');
     logFile.writeAsStringSync(jsonData.stdout);
+
+    print('Creating output directory.');
+    Directory('${dirname(Platform.script.path)}/../outputs/').createSync();
+
+    print('Calling python script to generate graph.');
+    ProcessResult pythonResult = Process.runSync(
+        'python3',
+        [
+          '${dirname(Platform.script.path)}/../python/graph_results.py',
+          '--issue=${results['issue']}',
+        ]);
+    print(pythonResult.stderr);
   } on FormatException catch (e) {
     // Print usage information if an invalid argument was provided.
     print(e.message);
