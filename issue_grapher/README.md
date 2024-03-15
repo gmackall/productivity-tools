@@ -1,4 +1,4 @@
-A tool to generate a graph of github likes an issue has received over time. 
+A tool to generate a graph of github reactions an issue has received over time. 
 
 Inspired by https://github.com/loic-sharma/github-insights.
 
