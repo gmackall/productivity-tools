@@ -22,7 +22,7 @@ From the root of `issue_grapher`, run `dart run bin/issue_grapher.dart --issue=8
 
 If all has gone well, you should see an output at `./outputs`, with the corresponding issue number.
 
-Outputs are EXTREMELY rough at the moment. Example:
+Outputs are somewhat rough at the moment. Example:
 
 ![Example output](https://github.com/gmackall/productivity-tools/blob/main/issue_grapher/sample.png)
 
