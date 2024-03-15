@@ -1,13 +1,19 @@
-A sample command-line application providing basic argument parsing with an entrypoint in `bin/`.
+A tool to generate a graph of github likes an issue has received over time. 
 
+Inspired by https://github.com/loic-sharma/github-insights.
 
 ### Installation:
+
+##### Set up the venv:
+
 `python3 -m venv venv`
 
 `source venv/bin/activate`
 
 `pip3 install -r requirements.txt`
 
+##### Install the github cli and authenticate:
+Install the gh cli, [instructions available here](https://github.com/gmackall/productivity-tools/tree/main/issue_grapher).
 
 Then, before running the dart tool: `gh auth login`.
 
