@@ -19,3 +19,8 @@ If all has gone well, you should see an output at `./outputs`, with the correspo
 Outputs are EXTREMELY rough at the moment. Example:
 
 ![Example output](https://github.com/gmackall/productivity-tools/blob/main/issue_grapher/sample.png)
+
+### Things that would be nice to add:
+1. Pass args to determine the time bucketing.
+2. Pass args to determine the start and end time.
+3. Make the x axis legible.
