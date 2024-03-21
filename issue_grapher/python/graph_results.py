@@ -3,6 +3,45 @@ import json
 import pandas
 import matplotlib.pyplot as plt
 import argparse
+from matplotlib.ticker import (MaxNLocator, AutoLocator)
+
+def custom_plot(df_original, max_xticks=10, arg_issue=0):
+
+    df = df_original.copy()
+    param_dict = {
+        'font.family': 'Arial',
+        'font.size': 12,
+        'lines.linewidth': 1,
+        'axes.linewidth':1,
+        'axes.grid': True,
+        'grid.linestyle': ':',
+        'grid.alpha': 0.5
+    }
+
+    with plt.rc_context(param_dict):
+        df['dates'] = [datetime.date() for datetime in df['id'].index]
+        df.set_index(df['dates'], inplace=True)
+
+        # Plotting
+        fig, ax = plt.subplots()
+        df['id'].plot(kind="bar", stacked=True, ax=ax)
+        
+        # Axis tick adjustments
+        xminor = ax.get_xticks()
+        ax.xaxis.set_major_locator(MaxNLocator(min(len(df), max_xticks)))
+        ax.set_xticks(xminor, minor=True)
+        ax.yaxis.set_major_locator(MaxNLocator(integer=True, nbins='auto', steps=[1,2,2.5,5,10]))
+
+        plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+        plt.xlabel('Date Created')
+        plt.ylabel('Reaction Count')
+        plt.title('Issue No. {}'.format(arg_issue))
+        
+        # Add padding so the dates don't get cut off.
+        plt.tight_layout()
+        
+        # Save to outputs folder.
+        plt.savefig(f'./outputs/{arg_issue}.png')
 
 parser = argparse.ArgumentParser(
     prog='ProgramName',
@@ -22,17 +61,4 @@ df = pandas.DataFrame(data=dictionary)
 df['created_at']=pandas.to_datetime(df['created_at'])
 df3 = df.groupby([pandas.Grouper(key='created_at', freq='W')]).count()
 
-fig, ax = plt.subplots()
-
-# Show date for at most 10 bars on x axis
-tick_step_size = round(len(df3['id']) / 10)
-df3['id'].plot(kind="bar", stacked=True, ax=ax)
-xLabels = ['']*len(df3['id'])
-xLabels[::tick_step_size] = [x.strftime("%Y-%m-%d") for x in df3['id'].index[::tick_step_size]]
-ax.set_xticklabels(xLabels, rotation=45)
-
-# Add padding so the dates don't get cut off.
-plt.subplots_adjust(bottom=0.2)
-
-# Save to outputs folder.
-plt.savefig(f'./outputs/{args.issue}.png')
+custom_plot(df3, arg_issue=args.issue)
