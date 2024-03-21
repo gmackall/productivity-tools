@@ -5,3 +5,4 @@ venv/
 logs/
 outputs/
 .idea/
+python/*.ipynb
