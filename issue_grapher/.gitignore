@@ -6,3 +6,4 @@ logs/
 outputs/
 .idea/
 python/*.ipynb
+python/*.ipynb_checkpoints
