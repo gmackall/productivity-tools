@@ -46,7 +46,7 @@ flutter {
 dependencies {
     implementation("androidx.lifecycle:lifecycle-common:2.7.0")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-process:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-process:2.8.7")
     implementation("androidx.lifecycle:lifecycle-runtime:2.7.0")
     implementation("androidx.fragment:fragment:1.7.1")
     implementation("androidx.annotation:annotation:1.8.0")
