@@ -48,7 +48,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
     implementation("androidx.lifecycle:lifecycle-process:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime:2.7.0")
-    implementation("androidx.fragment:fragment:1.7.1")
+    implementation("androidx.fragment:fragment:1.8.6")
     implementation("androidx.annotation:annotation:1.8.0")
     implementation("androidx.tracing:tracing:1.2.0")
     implementation("androidx.core:core:1.13.1")
